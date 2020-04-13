@@ -63,3 +63,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'prawn', '~>2.2.0'
 gem 'prawn-table'
+gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
+gem 'rails-ujs', '~> 0.1.0'

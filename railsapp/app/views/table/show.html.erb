@@ -2,3 +2,42 @@
   <br> Start time: <%= @start_time %>
   <br> End time: <%= @end_time %>
   <br> <%= $pages %> page pdf publish process time (sec): <%= @process_time %></p>
+
+<div class="btn btn-primary">
+  <%= link_to "Generate pdf",runner_path, class: 'btn', id:"my_btn"%>
+</div>
+
+<%if File.exist?("#{Rails.root}/app/assets/pdf/explicit.pdf")%>
+  <% path = asset_path("explicit.pdf")%>
+<%end%>
+
+<div id="pdf">
+  <a href=<%path%>> My PDF</a>
+</div>
+
+<div id="loading">
+  <p> Please Wait</p>
+</div>
+
+
+<script>
+var $loading = $('#loading').hide();
+var $pdf = $('#pdf').hide();
+
+$("#my_btn").click(function(e){
+
+   $.ajax({
+        type: "GET",
+        url: "/runner",
+        beforeSend: function () {
+          $loading.show();
+        },
+        complete: function () {
+          $loading.hide();
+          $pdf.show();
+        },
+    }); 
+    e.preventDefault();
+});
+
+</script>

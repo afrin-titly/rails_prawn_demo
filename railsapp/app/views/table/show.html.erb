@@ -4,7 +4,7 @@
   <br> <%= $pages %> page pdf publish process time (sec): <%= @process_time %></p>
 
 <div class="btn btn-primary">
-  <%= link_to "Generate pdf",runner_path, class: 'btn', id:"my_btn"%>
+  <%= link_to "Generate pdf",runner_path, download: "test-pdf", class: 'btn', id:"my_btn"%>
 </div>
 
 <%if File.exist?("#{Rails.root}/app/assets/pdf/explicit.pdf")%>

@@ -6,7 +6,7 @@ class PdfGenerateTest < Prawn::Document
               :bottom_margin => 30,
               :left_margin => 20,
               :right_margin => 10,
-              :compress => true,
+              :compress => true
         # font 'app/assets/fonts/ipaexm.ttf'
 
         font_families.update(
@@ -19,7 +19,7 @@ class PdfGenerateTest < Prawn::Document
             stroke_axis
             header(i, pages)
             move_down 50
-            # images
+            images
             if i==0
               tables1
               tables2

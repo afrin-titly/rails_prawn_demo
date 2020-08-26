@@ -5,15 +5,21 @@ class PdfGenerateTest < Prawn::Document
               :top_margin => 40,
               :bottom_margin => 30,
               :left_margin => 20,
-              :right_margin => 10
-        font 'app/assets/fonts/ipaexm.ttf'
+              :right_margin => 10,
+              :compress => true,
+        # font 'app/assets/fonts/ipaexm.ttf'
+
+        font_families.update(
+            'IPAex Mincho' => {
+            normal: 'app/assets/fonts/ipaexm.ttf'
+        })
 
         pages = 500
         pages.times do |i|
             stroke_axis
             header(i, pages)
             move_down 50
-            images
+            # images
             if i==0
               tables1
               tables2
@@ -35,6 +41,7 @@ class PdfGenerateTest < Prawn::Document
         # 日本語フォントを使用しないと日本語使えません
         # pdf.font_families.update('Test' => { normal: 'app/assets/fonts/ipaexm.ttf', bold: 'app/assets/fonts/ipaexg.ttf' })
         # pdf.font 'Test'
+        font 'IPAex Mincho'
         draw_text '請　求　書', :at => [350, 520], :width => 100, :height => 100, size: 30
         line([350, 510], [500, 510])      #下辺
         stroke                      #描画
@@ -72,6 +79,7 @@ class PdfGenerateTest < Prawn::Document
     end
 
     def tables1
+        font 'IPAex Mincho'
         move_down 100
         t = make_table([ ["incoming fee", "outgoing fee", "keeping", "others", "total", "tax"],
                             ["1","2","3","4","5","6"]])
@@ -80,6 +88,7 @@ class PdfGenerateTest < Prawn::Document
     end
 
     def tables2
+        font 'IPAex Mincho'
         move_down 140
         1.times do |i|
           table([ ["品番", "品名", "諸掛", "K", "前期残数", "数量", "重量", "単位", "単価", "小計", "金額"],
